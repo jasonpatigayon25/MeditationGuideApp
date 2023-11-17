@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Meditation Guide App</string>
+    <string name="back_button_description">Go back</string>
+    <string name="transparent_background_description">Transparent Description</string>
+    <string name="meditation_details_title">Meditation Details</string>
+    <string name="meditation_name_placeholder">Meditation Name</string>
+    <string name="meditation_description_placeholder">Meditation Description</string>
+    <string name="startbutton_background.xml_meditation">Start Meditation</string>
+    <string name="meditation_image_description">Meditation Image</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_discover">Discover</string>
+    <string name="navigation_my_meditations">My Meditations</string>
+    <string name="navigation_morning">Morning</string>
+    <string name="navigation_evening">Evening</string>
+    <string name="hamburger_description">Hamburger</string>
+</resources>
