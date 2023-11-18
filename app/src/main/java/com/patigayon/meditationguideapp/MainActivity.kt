@@ -11,12 +11,23 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var meditationAdapter: MeditationAdapter
     private val meditationTechniques = mutableListOf(
-        "Mindfulness Meditation", "Spiritual Meditation", "Focused Meditation",
-        "Movement Meditation", "Mantra Meditation", "Transcendental Meditation",
-        "Progressive Relaxation", "Loving-kindness Meditation", "Visualization Meditation",
-        "Vipassana Meditation", "Zen Meditation", "Yoga Meditation",
-        "Chakra Meditation", "Qigong Meditation", "Christian Contemplative Prayer"
+        MeditationTechnique(R.drawable.mindfulness_meditation_image, "Mindfulness Meditation", "Morning Routine"),
+        MeditationTechnique(R.drawable.spiritual_meditation_image, "Spiritual Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.focused_meditation_image, "Focused Meditation", "Morning Routine"),
+        MeditationTechnique(R.drawable.movement_meditation_image, "Movement Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.mantra_meditation_image, "Mantra Meditation", "Morning Routine"),
+        MeditationTechnique(R.drawable.transcendental_meditation_image, "Transcendental Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.progressive_relaxation_image, "Progressive Relaxation", "Morning Routine"),
+        MeditationTechnique(R.drawable.loving_kindness_meditation_image, "Loving-kindness Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.visualization_meditation_image, "Visualization Meditation", "Morning Routine"),
+        MeditationTechnique(R.drawable.vipassana_meditation_image, "Vipassana Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.zen_meditation_image, "Zen Meditation", "Morning Routine"),
+        MeditationTechnique(R.drawable.yoga_meditation_image, "Yoga Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.chakra_meditation_image, "Chakra Meditation", "Morning Routine"),
+        MeditationTechnique(R.drawable.qigong_meditation_image, "Qigong Meditation", "Evening Routine"),
+        MeditationTechnique(R.drawable.christian_contemplative_prayer_image, "Christian Contemplative Prayer", "Morning Routine")
     )
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +40,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        meditationAdapter = MeditationAdapter(meditationTechniques) { position ->
+        meditationAdapter = MeditationAdapter(meditationTechniques) { technique ->
+            // Now 'technique' is a MeditationTechnique object
             val intent = Intent(this, MeditationDetails::class.java).apply {
-                putExtra("meditation_name", meditationTechniques[position])
+                putExtra("meditation_name", technique.title) // Use 'title' from MeditationTechnique
             }
             startActivity(intent)
         }
@@ -40,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             adapter = meditationAdapter
         }
     }
+
 
     private fun setupBottomNavigationView() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -63,4 +76,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }
+
