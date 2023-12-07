@@ -1,19 +1,13 @@
 package com.patigayon.meditationguideapp
 
-import android.os.Build
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Window
-import android.view.WindowManager
-import android.widget.Button
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.patigayon.meditationguideapp.databinding.ActivityMainBinding
+import com.patigayon.meditationguideapp.databinding.CategoryCardBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,26 +16,21 @@ class MainActivity : AppCompatActivity() {
     private var meditationTechniques = mutableListOf<MeditationTechnique>()
     private lateinit var meditationAdapter: MeditationAdapter
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        supportActionBar?.hide()
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupRecyclerView()
-        fetchMeditationsFromFirestore() // Fetch meditation data from Firestore
+        fetchMeditationsFromFirestore()
         setupBottomNavigationView()
         setupCategoryButtons()
-
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun setupCategoryButtons() {
         val categories = listOf("Stress", "Anxiety", "Rest", "Self-Esteem", "Chill", "Other")
         val categoryColors = mapOf(
+            // Make sure these color resources exist in your colors.xml file
             "Stress" to R.color.stress_color,
             "Anxiety" to R.color.anxiety_color,
             "Rest" to R.color.rest_color,
@@ -51,42 +40,45 @@ class MainActivity : AppCompatActivity() {
         )
 
         categories.forEach { category ->
-            val cardView = layoutInflater.inflate(R.layout.category_card, binding.layoutCategories, false) as CardView
-            val button: Button = cardView.findViewById(R.id.category_button)
-            button.text = category
-            button.setTextColor(ContextCompat.getColor(this, R.color.maroon))
-            val colorResId = categoryColors[category] ?: R.color.other_color
-            button.setBackgroundColor(ContextCompat.getColor(this, colorResId))
-            button.setOnClickListener {
-                // Handle category button click
+            val categoryBinding = CategoryCardBinding.inflate(layoutInflater)
+            categoryBinding.categoryButton.apply {
+                text = category
+                setBackgroundColor(categoryColors[category] ?: R.color.other_color)
+                setOnClickListener {
+                    // Handle category button click
+                }
             }
-            binding.layoutCategories.addView(cardView)
+            binding.layoutCategories.addView(categoryBinding.root)
         }
     }
 
     private fun setupRecyclerView() {
         meditationAdapter = MeditationAdapter(meditationTechniques) { technique ->
-            // Handle click on meditation technique
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra("name", technique.name)
+                putExtra("routine", technique.routine)
+                putExtra("photo", technique.photo)
+                putExtra("description", technique.description)
+            }
+            startActivity(intent)
         }
-        binding.recyclerMeditationTechniques.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = meditationAdapter
-        }
+        binding.recyclerMeditationTechniques.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerMeditationTechniques.adapter = meditationAdapter
     }
 
     private fun fetchMeditationsFromFirestore() {
         db.collection("meditations")
             .get()
             .addOnSuccessListener { documents ->
-                val newTechniques = documents.map { document ->
-                    document.toObject(MeditationTechnique::class.java)
-                }
-                meditationAdapter.updateTechniques(newTechniques)
+                meditationTechniques.clear()
+                meditationTechniques.addAll(documents.mapNotNull { it.toObject(MeditationTechnique::class.java) })
+                meditationAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
+                // Log or handle the exception as necessary
             }
     }
+
     private fun setupBottomNavigationView() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {

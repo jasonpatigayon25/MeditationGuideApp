@@ -15,7 +15,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:titleTextColor="@android:color/black">
 
-        <!-- Hamburger Menu Icon -->
         <ImageView
             android:id="@+id/hamburger_menu"
             android:layout_width="wrap_content"
@@ -24,7 +23,6 @@
             android:contentDescription="@string/hamburger_description"
             android:padding="16dp"/>
 
-        <!-- Search View -->
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_meditation_techniques"
             android:layout_width="match_parent"
