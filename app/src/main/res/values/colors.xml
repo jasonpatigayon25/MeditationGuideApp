@@ -8,4 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="maroon">#800000</color>
+    <color name="transparent">#00000000</color>
+    <color name="stress_color">#FF6D6D</color>
+    <color name="anxiety_color">#4DB8FF</color>
+    <color name="rest_color">#70DB93</color>
+    <color name="self_esteem_color">#FFDB58</color>
+    <color name="chill_color">#9F79EE</color>
+    <color name="other_color">#D8BFD8</color>
+    <color name="selected_item_background">#CCFFFFFF</color>
 </resources>

@@ -9,8 +9,11 @@
     <string name="meditation_image_description">Meditation Image</string>
     <string name="navigation_home">Home</string>
     <string name="navigation_discover">Discover</string>
-    <string name="navigation_my_meditations">My Meditations</string>
+    <string name="navigation_my_meditations">MyMedit</string>
     <string name="navigation_morning">Morning</string>
     <string name="navigation_evening">Evening</string>
     <string name="hamburger_description">Hamburger</string>
+    <string name="categories_scroll_view_description">Scrollable categories</string>
+    <string name="category_button_description">Category button</string>
+
 </resources>

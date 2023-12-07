@@ -15,6 +15,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:titleTextColor="@android:color/black">
 
+        <!-- Hamburger Menu Icon -->
         <ImageView
             android:id="@+id/hamburger_menu"
             android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
             android:contentDescription="@string/hamburger_description"
             android:padding="16dp"/>
 
+        <!-- Search View -->
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_meditation_techniques"
             android:layout_width="match_parent"
@@ -38,18 +40,42 @@
             app:searchIcon="@drawable/ic_search"
             app:closeIcon="@drawable/ic_close"
             app:iconifiedByDefault="true"/>
+
     </androidx.appcompat.widget.Toolbar>
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_meditation_techniques"
+        android:fillViewport="true"
+        android:contentDescription="@string/categories_scroll_view_description">
+
+        <LinearLayout
+            android:id="@+id/layout_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_meditation_techniques"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@id/toolbar_meditation_techniques"
-        android:layout_above="@id/bottom_navigation"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scrollView_categories"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:scrollbars="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@id/scrollView_categories" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -58,7 +84,11 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/background_headers"
         app:menu="@menu/bottom_navigation_menu"
+        android:fontFamily="@font/custom_font"
+        app:elevation="4dp"
+        android:padding="8dp"
         app:itemIconTint="@color/bottom_nav_icon_color_selector"
-        app:itemTextColor="@color/bottom_nav_icon_color_selector"/>
+        app:itemTextColor="@color/bottom_nav_icon_color_selector"
+        tools:ignore="BottomNavigationView"/>
 
 </RelativeLayout>

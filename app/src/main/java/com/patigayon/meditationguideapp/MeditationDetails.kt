@@ -92,13 +92,26 @@ class MeditationDetails : AppCompatActivity() {
     }
 
     private fun getMeditationImage(meditationName: String): Int {
-        // Replace with actual drawable resources
         return when (meditationName) {
-            "Mindfulness Meditation" -> R.drawable.mindfulness_image
-            // ... other meditation techniques
+            "Mindfulness Meditation" -> R.drawable.mindfulness_meditation_image
+            "Spiritual Meditation" -> R.drawable.spiritual_meditation_image
+            "Focused Meditation" -> R.drawable.focused_meditation_image
+            "Movement Meditation" -> R.drawable.movement_meditation_image
+            "Mantra Meditation" -> R.drawable.mantra_meditation_image
+            "Transcendental Meditation" -> R.drawable.transcendental_meditation_image
+            "Progressive Relaxation" -> R.drawable.progressive_relaxation_image
+            "Loving-kindness Meditation" -> R.drawable.loving_kindness_meditation_image
+            "Visualization Meditation" -> R.drawable.visualization_meditation_image
+            "Vipassana Meditation" -> R.drawable.vipassana_meditation_image
+            "Zen Meditation" -> R.drawable.zen_meditation_image
+            "Yoga Meditation" -> R.drawable.yoga_meditation_image
+            "Chakra Meditation" -> R.drawable.chakra_meditation_image
+            "Qigong Meditation" -> R.drawable.qigong_meditation_image
+            "Christian Contemplative Prayer" -> R.drawable.christian_contemplative_prayer_image
             else -> R.drawable.default_meditation_image
         }
     }
+
 
     private fun getMeditationDescription(meditationName: String): String {
         return when (meditationName) {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "646421020807",
+    "project_id": "meditation-guide-app",
+    "storage_bucket": "meditation-guide-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646421020807:android:22a0ceac5eeb1a6ac57822",
+        "android_client_info": {
+          "package_name": "com.patigayon.meditationguideapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASWrH2yIWD6Yt0DJBkb5ZQzmYhMAaVA-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
