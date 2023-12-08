@@ -6,15 +6,16 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Discover New Techniques"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/background_headers"
         android:padding="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:text="Discover New Techniques"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,5 +54,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical" />
+        android:orientation="horizontal" />
 </LinearLayout>

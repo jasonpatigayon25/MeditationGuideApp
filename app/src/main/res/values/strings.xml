@@ -21,5 +21,6 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="next">Next</string>
-
+    <string name="sessions_format">Sessions: %1$d</string>
+    <string name="session_count">Sessions: %1$d</string>
 </resources>

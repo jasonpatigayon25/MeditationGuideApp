@@ -33,8 +33,12 @@ class DiscoverFragment : Fragment() {
         categoryAdapter = CategoryAdapter(emptyList()) { category ->
             // Handle category click
         }
+
+
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         binding.recyclerCategories.adapter = categoryAdapter
-        binding.recyclerCategories.layoutManager = LinearLayoutManager(context)
+        binding.recyclerCategories.layoutManager = layoutManager
 
         fetchCategoriesFromFirestore()
     }
@@ -51,6 +55,7 @@ class DiscoverFragment : Fragment() {
                 // Handle error
             }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

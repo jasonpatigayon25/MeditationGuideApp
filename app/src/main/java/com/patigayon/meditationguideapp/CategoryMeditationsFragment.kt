@@ -41,13 +41,11 @@ class CategoryMeditationsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         meditationAdapter = MeditationAdapter(listOf()) { technique ->
-            // When a meditation is clicked, start DetailActivity with the details of the clicked meditation
             val intent = Intent(context, DetailActivity::class.java).apply {
                 putExtra("name", technique.name)
                 putExtra("routine", technique.routine)
                 putExtra("photo", technique.photo)
                 putExtra("description", technique.description)
-                // If sessions or any other data needs to be passed to DetailActivity, add them here
             }
             startActivity(intent)
         }
