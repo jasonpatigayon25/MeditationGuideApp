@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/background_screen"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_screen">
 
+    <ImageView
+        android:id="@+id/qigong_pose_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/qigong_meditation_image"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/qigong_meditation" />
 
-    <TextView
+    <Button
+        android:id="@+id/start_meditation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EVENING"
-        android:layout_gravity="center" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="400dp"
+        android:background="@drawable/round_button"
+        android:drawablePadding="10dp"
+        android:paddingLeft="32dp"
+        android:paddingTop="12dp"
+        android:textStyle="bold"
+        android:paddingRight="32dp"
+        android:paddingBottom="12dp"
+        android:text="@string/start_meditation"
+        android:textColor="@color/white" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/evening_sessions_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/qigong_pose_image"
+        android:layout_marginTop="8dp"
+        android:text="Qigong Meditation"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/maroon" />
+
+    <TextView
+        android:id="@+id/meditation_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/evening_sessions_title"
+        android:text="Focusing on the flow of energy"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/maroon" />
+
+    <TextView
+        android:id="@+id/tv_meditation_evening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meditation_description"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Evening Sessions"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/maroon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_evening_meditations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_meditation_evening"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:scrollbars="vertical"/>
+</RelativeLayout>

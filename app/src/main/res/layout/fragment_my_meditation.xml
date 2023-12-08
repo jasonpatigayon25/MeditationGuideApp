@@ -4,6 +4,17 @@
     android:background="@drawable/background_screen"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_headers"
+        android:padding="8dp"
+        android:text="My Meditation Progress"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"

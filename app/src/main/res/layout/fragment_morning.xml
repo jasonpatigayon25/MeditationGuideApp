@@ -53,11 +53,23 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/maroon" />
 
+    <TextView
+        android:id="@+id/tv_meditation_morning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meditation_description"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Morning Sessions"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/maroon" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_morning_meditations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/meditation_description"
+        android:layout_below="@id/tv_meditation_morning"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:scrollbars="vertical"/>

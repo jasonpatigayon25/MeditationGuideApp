@@ -5,14 +5,57 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
+import com.patigayon.meditationguideapp.databinding.FragmentEveningBinding
 
 class EveningFragment : Fragment() {
+
+    private var _binding: FragmentEveningBinding? = null
+    private val binding get() = _binding!!
+
+    private val db = FirebaseFirestore.getInstance()
+    private var eveningMeditations = mutableListOf<MeditationTechnique>()
+    private lateinit var meditationAdapter: MeditationAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        _binding = FragmentEveningBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_evening, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        fetchEveningMeditationsFromFirestore()
+    }
+
+    private fun setupRecyclerView() {
+        meditationAdapter = MeditationAdapter(eveningMeditations) { technique ->
+            // handle click on meditation technique
+        }
+        binding.recyclerEveningMeditations.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerEveningMeditations.adapter = meditationAdapter
+    }
+
+    private fun fetchEveningMeditationsFromFirestore() {
+        db.collection("meditations")
+            .whereEqualTo("routine", "Evening Routine") // Filter by the 'routine' field
+            .get()
+            .addOnSuccessListener { documents ->
+                eveningMeditations.clear()
+                eveningMeditations.addAll(documents.mapNotNull { it.toObject(MeditationTechnique::class.java) })
+                meditationAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                // Handle error, possibly show a message to the user
+            }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
