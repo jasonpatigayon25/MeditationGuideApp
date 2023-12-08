@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_discover -> {
-                    replaceFragment(EveningFragment())
+                    replaceFragment(DiscoverFragment())
                     true
                 }
                 R.id.navigation_my_meditations -> {
