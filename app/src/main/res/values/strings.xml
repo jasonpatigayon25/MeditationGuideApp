@@ -17,5 +17,9 @@
     <string name="category_button_description">Category button</string>
     <string name="start_meditation">Start Meditation</string>
     <string name="meditation_image">Image Meditation</string>
+    <string name="pause">Pause</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="next">Next</string>
 
 </resources>

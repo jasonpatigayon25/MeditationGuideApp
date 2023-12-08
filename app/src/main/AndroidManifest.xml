@@ -37,6 +37,15 @@
             android:name=".DetailActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".HomeFragment"
+            android:exported="true" />
+
+        <activity
+            android:name=".StartingSessionActivity"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>

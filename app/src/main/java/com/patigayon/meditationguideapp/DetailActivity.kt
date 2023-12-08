@@ -1,12 +1,11 @@
 package com.patigayon.meditationguideapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.Window
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.patigayon.meditationguideapp.databinding.ActivityDetailBinding
+
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -26,6 +25,11 @@ class DetailActivity : AppCompatActivity() {
 
         binding.backButton.setOnClickListener {
             finish()
+        }
+
+        binding.buttonStartMeditation.setOnClickListener {
+            val intent = Intent(this, StartingSessionActivity::class.java)
+            startActivity(intent)
         }
 
         Glide.with(this).load(meditationPhotoUrl).into(binding.meditationImage)
