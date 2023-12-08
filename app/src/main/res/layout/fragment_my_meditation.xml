@@ -57,15 +57,14 @@
 
             <TextView
                 android:id="@+id/session_title"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_alignTop="@id/session_icon"
                 android:text="@string/spiritual_meditation"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
-                app:layout_constraintStart_toEndOf="@id/session_icon"
-                app:layout_constraintEnd_toStartOf="@id/play_button"
-                app:layout_constraintTop_toTopOf="@id/session_icon" />
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/session_details"
@@ -90,10 +89,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_play"
-                android:contentDescription="@string/play_session_description"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/session_icon"
-                app:layout_constraintBottom_toBottomOf="@id/session_icon" />
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/play_session_description" />
         </RelativeLayout>
 
         <TextView
