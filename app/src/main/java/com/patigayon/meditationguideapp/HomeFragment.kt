@@ -38,7 +38,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun onCategoryClicked(category: Category) {
-        Toast.makeText(context, "Category Clicked: ${category.title}", Toast.LENGTH_SHORT).show()
+        val fragment = CategoryMeditationsFragment.newInstance(category.title)
+        fragmentManager?.beginTransaction()
+            ?.replace(R.id.fragmentContainer, fragment)
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
     private fun setupCategoryRecyclerView() {

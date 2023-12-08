@@ -45,6 +45,9 @@
             android:name=".StartingSessionActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".CategoryMeditationsFragment"
+            android:exported="true" />
 
     </application>
 

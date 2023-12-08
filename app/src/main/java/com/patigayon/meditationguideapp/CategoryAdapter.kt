@@ -13,6 +13,11 @@ class CategoryAdapter(private var categories: List<Category>, private val onClic
         notifyDataSetChanged()
     }
 
+    fun updateData(newCategories: List<Category>) {
+        categories = newCategories
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding = CategoryCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategoryViewHolder(binding, onClick)
