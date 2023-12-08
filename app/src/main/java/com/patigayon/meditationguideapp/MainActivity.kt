@@ -2,15 +2,15 @@ package com.patigayon.meditationguideapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.view.Window
-import androidx.appcompat.widget.Toolbar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.patigayon.meditationguideapp.databinding.ActivityMainBinding
-import com.patigayon.meditationguideapp.databinding.CategoryCardBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var meditationTechniques = mutableListOf<MeditationTechnique>()
     private lateinit var meditationAdapter: MeditationAdapter
+    private lateinit var categoryAdapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        categoryAdapter = CategoryAdapter(emptyList(), this::onCategoryClicked)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,32 +30,34 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         fetchMeditationsFromFirestore()
         setupBottomNavigationView()
-        setupCategoryButtons()
+        setupCategoryRecyclerView()
     }
 
-    private fun setupCategoryButtons() {
-        val categories = listOf("Stress", "Anxiety", "Rest", "Self-Esteem", "Chill", "Other")
-        val categoryColors = mapOf(
-            // Make sure these color resources exist in your colors.xml file
-            "Stress" to R.color.stress_color,
-            "Anxiety" to R.color.anxiety_color,
-            "Rest" to R.color.rest_color,
-            "Self-Esteem" to R.color.self_esteem_color,
-            "Chill" to R.color.chill_color,
-            "Other" to R.color.other_color
-        )
+    private fun onCategoryClicked(category: Category) {
+        Toast.makeText(this, "Category Clicked: ${category.title}", Toast.LENGTH_SHORT).show()
+    }
 
-        categories.forEach { category ->
-            val categoryBinding = CategoryCardBinding.inflate(layoutInflater)
-            categoryBinding.categoryButton.apply {
-                text = category
-                setBackgroundColor(categoryColors[category] ?: R.color.other_color)
-                setOnClickListener {
-                    // Handle category button click
-                }
-            }
-            binding.layoutCategories.addView(categoryBinding.root)
+    private fun setupCategoryRecyclerView() {
+        categoryAdapter = CategoryAdapter(emptyList()) { category ->
+            Toast.makeText(this, "Clicked on ${category.title}", Toast.LENGTH_SHORT).show()
         }
+        binding.recyclerCategories.adapter = categoryAdapter
+        binding.recyclerCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        fetchCategoriesFromFirestore()
+    }
+
+    private fun fetchCategoriesFromFirestore() {
+        db.collection("categories")
+            .get()
+            .addOnSuccessListener { documents ->
+                val categories = documents.mapNotNull { it.toObject(Category::class.java) }
+                categoryAdapter.updateCategories(categories)
+                categoryAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Error fetching categories", exception)
+            }
     }
 
     private fun setupRecyclerView() {
@@ -79,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                 meditationAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                // Log or handle the exception as necessary
+                Log.e(TAG, "Error fetching meditations", exception)
             }
     }
 

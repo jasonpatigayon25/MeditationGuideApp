@@ -16,5 +16,6 @@
     <string name="categories_scroll_view_description">Scrollable categories</string>
     <string name="category_button_description">Category button</string>
     <string name="start_meditation">Start Meditation</string>
+    <string name="meditation_image">Image Meditation</string>
 
 </resources>
