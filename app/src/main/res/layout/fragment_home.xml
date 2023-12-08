@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
     android:background="@drawable/background_screen"
-    android:layout_height="match_parent">
+    tools:context=".HomeFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HOME"
-        android:layout_gravity="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</FrameLayout>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_meditation_techniques"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Techniques"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:background="@drawable/background_headers"
+                app:queryBackground="@drawable/background_headers"
+                app:submitBackground="@drawable/background_headers"
+                app:searchIcon="@drawable/ic_search"
+                app:closeIcon="@drawable/ic_close"
+                app:iconifiedByDefault="true"
+                android:layout_alignParentTop="true"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_meditation_techniques"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="horizontal"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <TextView
+                android:id="@+id/tv_meditation_techniques_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycler_categories"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Meditation Techniques"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/maroon" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_meditation_techniques"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_meditation_techniques_title"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="horizontal"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <FrameLayout
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bottom_navigation"
+                android:layout_below="@id/recycler_meditation_techniques" />
+
+            <TextView
+                android:id="@+id/tv_meditation_of_the_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recycler_meditation_techniques"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Meditation of the Day"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/maroon" />
+
+            <ImageView
+                android:id="@+id/iv_focused_meditation"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/tv_meditation_of_the_day"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/yoga_meditation_image"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
