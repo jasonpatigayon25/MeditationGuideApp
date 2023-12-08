@@ -5,18 +5,17 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Back Button -->
     <ImageButton
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
         android:src="@drawable/ic_back"
         android:contentDescription="@string/back"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true" />
 
-    <!-- Category Title -->
     <TextView
         android:id="@+id/tvCategoryTitle"
         android:layout_width="wrap_content"
@@ -25,7 +24,6 @@
         android:textStyle="bold"
         android:padding="8dp" />
 
-    <!-- RecyclerView for the meditations -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCategoryMeditations"
         android:layout_width="match_parent"

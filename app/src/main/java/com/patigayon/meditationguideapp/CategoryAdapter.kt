@@ -34,7 +34,6 @@ class CategoryAdapter(private var categories: List<Category>, private val onClic
 
         fun bind(category: Category) {
             binding.categoryTitle.text = category.title
-            // Load photo using Glide
             Glide.with(binding.root.context)
                 .load(category.photo)
                 .into(binding.categoryImage)

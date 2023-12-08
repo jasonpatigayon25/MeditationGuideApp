@@ -1,5 +1,6 @@
 package com.patigayon.meditationguideapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,15 +35,22 @@ class MorningFragment : Fragment() {
 
     private fun setupRecyclerView() {
         meditationAdapter = MeditationAdapter(morningMeditations) { technique ->
-            // handle click on meditation technique
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("name", technique.name)
+                putExtra("routine", technique.routine)
+                putExtra("photo", technique.photo)
+                putExtra("description", technique.description)
+            }
+            startActivity(intent)
         }
         binding.recyclerMorningMeditations.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerMorningMeditations.adapter = meditationAdapter
     }
 
+
     private fun fetchMorningMeditationsFromFirestore() {
         db.collection("meditations")
-            .whereEqualTo("routine", "Morning Routine") // Filter by the 'routine' field
+            .whereEqualTo("routine", "Morning Routine")
             .get()
             .addOnSuccessListener { documents ->
                 morningMeditations.clear()
@@ -50,9 +58,10 @@ class MorningFragment : Fragment() {
                 meditationAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                // Handle error, possibly show a message to the user
+                //
             }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

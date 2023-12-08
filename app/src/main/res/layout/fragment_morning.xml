@@ -36,9 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/qigong_pose_image"
         android:layout_marginTop="8dp"
-        android:text="Zen Meditation"
+        android:text="@string/zen"
         android:textStyle="bold"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/maroon" />
 
@@ -47,8 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/morning_sessions_title"
-        android:text="Focusing on the flow of energy"
+        android:text="@string/focus_desc"
         android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/maroon" />
@@ -60,7 +62,7 @@
         android:layout_below="@id/meditation_description"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Morning Sessions"
+        android:text="@string/morning_session"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/maroon" />

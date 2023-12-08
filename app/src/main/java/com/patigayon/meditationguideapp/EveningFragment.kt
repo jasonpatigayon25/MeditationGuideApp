@@ -1,5 +1,6 @@
 package com.patigayon.meditationguideapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,13 @@ class EveningFragment : Fragment() {
 
     private fun setupRecyclerView() {
         meditationAdapter = MeditationAdapter(eveningMeditations) { technique ->
-            // handle click on meditation technique
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("name", technique.name)
+                putExtra("routine", technique.routine)
+                putExtra("photo", technique.photo)
+                putExtra("description", technique.description)
+            }
+            startActivity(intent)
         }
         binding.recyclerEveningMeditations.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerEveningMeditations.adapter = meditationAdapter
@@ -50,7 +57,7 @@ class EveningFragment : Fragment() {
                 meditationAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                // Handle error, possibly show a message to the user
+                //
             }
     }
 
