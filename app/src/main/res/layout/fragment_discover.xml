@@ -1,58 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_screen"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/headerText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/background_headers"
-        android:padding="8dp"
-        android:text="Discover New Techniques"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:background="@drawable/background_screen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recommended for You"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_headers"
+            android:padding="8dp"
+            android:text="Discover New Techniques"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageViewVisualization"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/visualization_meditation_image"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/tvRecommendedforyou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommended for You"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Your Meditations"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        <ImageView
+            android:id="@+id/imageViewVisualization"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/visualization_meditation_image"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Categories"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/textviewStartYourMeditation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Your Meditations"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCategories"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal" />
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/session_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textviewStartYourMeditation"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_screen"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/session_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/yoga_meditation_image"
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/session_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_alignTop="@id/session_icon"
+                android:text="Yoga Meditation"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/session_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_below="@id/session_title"
+                android:text="Evening Routine\nNumber of Sessions: 7"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/session_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_below="@id/session_details"
+                android:text="Chill"
+                android:textColor="@color/gray" />
+
+            <ImageView
+                android:id="@+id/play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_ellipse"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/play_session_description" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCategories"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+</ScrollView>

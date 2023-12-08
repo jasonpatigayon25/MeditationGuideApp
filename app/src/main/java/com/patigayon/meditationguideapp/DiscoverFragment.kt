@@ -27,19 +27,21 @@ class DiscoverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCategoryRecyclerView()
+
+    }
+
+    private fun onCategoryClicked(category: Category) {
+        val fragment = CategoryMeditationsFragment.newInstance(category.title)
+        fragmentManager?.beginTransaction()
+            ?.replace(R.id.fragmentContainer, fragment)
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
     private fun setupCategoryRecyclerView() {
-        categoryAdapter = CategoryAdapter(emptyList()) { category ->
-            // Handle category click
-        }
-
-
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
+        categoryAdapter = CategoryAdapter(emptyList(), this::onCategoryClicked)
         binding.recyclerCategories.adapter = categoryAdapter
-        binding.recyclerCategories.layoutManager = layoutManager
-
+        binding.recyclerCategories.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         fetchCategoriesFromFirestore()
     }
 
@@ -51,10 +53,8 @@ class DiscoverFragment : Fragment() {
                 categoryAdapter.updateCategories(categories)
                 categoryAdapter.notifyDataSetChanged()
             }
-            .addOnFailureListener { exception ->
-                // Handle error
-            }
     }
+
 
 
     override fun onDestroyView() {

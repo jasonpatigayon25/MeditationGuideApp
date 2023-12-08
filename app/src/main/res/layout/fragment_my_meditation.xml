@@ -1,25 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     android:layout_width="match_parent"
-    android:background="@drawable/background_screen"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/headerText"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/background_headers"
-        android:padding="8dp"
-        android:text="My Meditation Progress"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/background_screen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MYMEDITATION"
-        android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_headers"
+            android:padding="8dp"
+            android:text="My Meditation Progress"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"/>
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvMySessions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headerText"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="My Sessions"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/maroon" />
+
+        <RelativeLayout
+            android:id="@+id/session_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvMySessions"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_screen"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/session_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/yoga_meditation_image"
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/session_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_alignTop="@id/session_icon"
+                android:text="Spiritual Meditation"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/session_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_below="@id/session_title"
+                android:text="Evening Routine\nNumber of Sessions: 7"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/session_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/session_icon"
+                android:layout_below="@id/session_details"
+                android:text="71%"
+                android:textColor="@color/maroon" />
+
+            <ImageView
+                android:id="@+id/play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_play"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/play_session_description" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvMyProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/session_container"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="My Progress"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/maroon" />
+
+        <HorizontalScrollView
+            android:id="@+id/scrolls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:layout_below="@id/tvMyProgress"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="16dp">
+
+                    <ImageView
+                        android:id="@+id/progress_image1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/yoga_meditation_image"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/yoga_meditation_description" />
+
+                    <TextView
+                        android:id="@+id/progress_percentage1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="80%"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/maroon"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="16dp">
+
+                    <ImageView
+                        android:id="@+id/progress_image2"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/vipassana_meditation_image"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/movement_meditation_description" />
+
+                    <TextView
+                        android:id="@+id/progress_percentage2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="70%"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/maroon"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/add_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_add"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/add_description" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tvMyFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scrolls"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="My Favorites"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/maroon" />
+
+        <ImageView
+            android:id="@+id/qigong_pose_image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/tvMyFavorites"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/zen_meditation_image"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/qigong_meditation" />
+
+        <LinearLayout
+            android:id="@+id/indicator_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@id/qigong_pose_image"
+            android:layout_marginBottom="16dp"
+            android:gravity="center">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot"
+                android:layout_margin="4dp" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/dot"
+                android:layout_margin="4dp" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
