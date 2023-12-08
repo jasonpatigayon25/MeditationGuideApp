@@ -2,7 +2,6 @@ package com.patigayon.meditationguideapp
 
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +18,6 @@ class MeditationDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.meditation_detail)
 
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_meditation_details)
         val tvMeditationName = findViewById<TextView>(R.id.tv_meditation_name)
         val tvMeditationDescription = findViewById<TextView>(R.id.tv_meditation_description)
         val ivMeditationImage = findViewById<ImageView>(R.id.iv_meditation_image)
@@ -31,15 +29,10 @@ class MeditationDetails : AppCompatActivity() {
         tvMeditationDescription.text = getMeditationDescription(meditationName)
         ivMeditationImage.setImageResource(getMeditationImage(meditationName))
 
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
-
         btnStartMeditation.setOnClickListener {
             showDurationPicker()
         }
     }
-
     private fun showDurationPicker() {
         val durations = arrayOf("5 minutes", "10 minutes", "15 minutes", "20 minutes")
         AlertDialog.Builder(this)

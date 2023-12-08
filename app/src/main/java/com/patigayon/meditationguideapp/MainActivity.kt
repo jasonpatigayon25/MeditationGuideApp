@@ -2,6 +2,9 @@ package com.patigayon.meditationguideapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.Window
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var meditationAdapter: MeditationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
