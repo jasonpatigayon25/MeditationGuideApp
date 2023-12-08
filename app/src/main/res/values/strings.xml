@@ -23,4 +23,5 @@
     <string name="next">Next</string>
     <string name="sessions_format">Sessions: %1$d</string>
     <string name="session_count">Sessions: %1$d</string>
+    <string name="qigong_meditation">Qigong Meditation</string>
 </resources>
