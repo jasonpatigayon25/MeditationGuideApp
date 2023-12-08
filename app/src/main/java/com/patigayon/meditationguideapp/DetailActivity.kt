@@ -22,6 +22,8 @@ class DetailActivity : AppCompatActivity() {
         binding.meditationDescription.text = meditationDescription
         binding.meditationName.text = meditationName
         binding.meditationRoutine.text = meditationRoutine
+        Glide.with(this).load(meditationPhotoUrl).into(binding.meditationImage)
+        binding.meditationDescription.text = meditationDescription
 
         binding.backButton.setOnClickListener {
             finish()
