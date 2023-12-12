@@ -14,6 +14,13 @@ class StartingSessionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        try {
+            supportActionBar!!.hide()
+        } catch (e: NullPointerException) {
+            e.printStackTrace()
+        }
+
         binding = ActivityStartingSessionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

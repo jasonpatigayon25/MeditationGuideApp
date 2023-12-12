@@ -27,6 +27,7 @@
     <string name="zen">Zen Meditation</string>
     <string name="yoga_meditation_description">Yoga Meditation</string>
     <string name="spiritual_meditation">Spritual Meditation</string>
+    <string name="transcendental_meditation">Transcendental Meditation</string>
     <string name="add_description">Add</string>
     <string name="movement_meditation_description">Movement Meditation</string>
     <string name="play_session_description">Play session</string>
@@ -38,7 +39,7 @@
     <string name="category">Category</string>
     <string name="start_your_meditation">Start Your Meditation</string>
     <string name="morning_routine">Evening Routine\nNumber of Sessions: 7</string>
-    <string name="evening_routine">Evening Routine\nNumber of Sessions: 7</string>
+    <string name="evening_routine">Evening Routine\nNumber of Sessions: 10</string>
     <string name="evening_session">Evening Session</string>
     <string name="morning_session">Morning Session</string>
     <string name="focus_desc">Focusing on the flow of energy</string>

@@ -29,6 +29,7 @@
             android:text="@string/recommended_for_you"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:paddingHorizontal="15dp"
             android:textColor="@color/maroon"
             android:layout_marginBottom="8dp"/>
 
@@ -46,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/start_your_meditation"
+            android:paddingHorizontal="15dp"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/maroon"
@@ -113,6 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category"
+            android:paddingHorizontal="15dp"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/maroon"

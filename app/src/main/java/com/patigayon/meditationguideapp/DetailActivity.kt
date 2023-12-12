@@ -12,6 +12,13 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        try {
+            supportActionBar!!.hide()
+        } catch (e: NullPointerException) {
+            e.printStackTrace()
+        }
+
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
