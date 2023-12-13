@@ -22,10 +22,12 @@ class DetailActivity : AppCompatActivity() {
         val meditationRoutine = intent.getStringExtra("routine")
         val meditationPhotoUrl = intent.getStringExtra("photo")
         val meditationDescription = intent.getStringExtra("description")
+        val meditationCategory = intent.getStringExtra("category")
 
         binding.meditationName.text = meditationName
         binding.meditationRoutine.text = meditationRoutine
         binding.meditationDescription.text = meditationDescription
+        binding.meditationCategory.text = meditationCategory
 
         meditationPhotoUrl?.let { url ->
 
@@ -46,7 +48,13 @@ class DetailActivity : AppCompatActivity() {
         }
 
         binding.buttonStartMeditation.setOnClickListener {
-            startActivity(Intent(this, StartingSessionActivity::class.java))
+            val startSessionIntent = Intent(this, StartingSessionActivity::class.java).apply {
+                putExtra("photo", meditationPhotoUrl)
+                putExtra("name", meditationName)
+                putExtra("routine", meditationRoutine)
+                putExtra("category", meditationCategory)
+            }
+            startActivity(startSessionIntent)
         }
     }
 }

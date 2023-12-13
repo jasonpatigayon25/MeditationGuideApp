@@ -40,6 +40,7 @@ class MorningFragment : Fragment() {
                 putExtra("routine", technique.routine)
                 putExtra("photo", technique.photo)
                 putExtra("description", technique.description)
+                putExtra("category", technique.category)
             }
             startActivity(intent)
         }

@@ -7,7 +7,10 @@ import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.patigayon.meditationguideapp.databinding.ActivityStartingSessionBinding
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 class StartingSessionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartingSessionBinding
@@ -18,11 +21,29 @@ class StartingSessionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityStartingSessionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
-        binding = ActivityStartingSessionBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val meditationName = intent.getStringExtra("name") ?: "Meditation Name"
+        val meditationRoutine = intent.getStringExtra("routine") ?: "Routine"
+        val meditationCategory = intent.getStringExtra("category") ?: "Category"
+        val meditationPhotoUrl = intent.getStringExtra("photo")
+
+        binding.sessionName.text = getString(R.string.session_1)
+        binding.meditationName.text = meditationName
+        binding.meditationRoutine.text = meditationRoutine
+        binding.meditationCategory.text = meditationCategory
+
+        meditationPhotoUrl?.let { url ->
+            Glide.with(this)
+                .load(url)
+                .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 3)))
+                .into(binding.backgroundImageView)
+            binding.backgroundImageView.visibility = View.VISIBLE
+            binding.backgroundImageView.alpha = 0.3f
+        }
 
         setupTimePicker()
 

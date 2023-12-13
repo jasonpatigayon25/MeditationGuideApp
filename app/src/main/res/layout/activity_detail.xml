@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="24sp"
+                android:textColor="@color/maroon"
                 android:textStyle="bold" />
 
             <TextView
@@ -58,6 +59,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/meditationCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/gray"
                 android:textSize="18sp" />
 
             <TextView
