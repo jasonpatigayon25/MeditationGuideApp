@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    implementation ("jp.wasabeef:glide-transformations:4.3.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("com.google.android.material:material:1.4.0")
     implementation ("com.github.bumptech.glide:glide:4.11.0")

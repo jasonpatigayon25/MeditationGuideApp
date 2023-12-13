@@ -26,7 +26,7 @@
     <string name="qigong_meditation">Qigong Meditation</string>
     <string name="zen">Zen Meditation</string>
     <string name="yoga_meditation_description">Yoga Meditation</string>
-    <string name="spiritual_meditation">Spritual Meditation</string>
+    <string name="spiritual_meditation">Spiritual Meditation</string>
     <string name="transcendental_meditation">Transcendental Meditation</string>
     <string name="add_description">Add</string>
     <string name="movement_meditation_description">Movement Meditation</string>
@@ -51,4 +51,5 @@
     <string name="my_favorites">My Favorites</string>
     <string name="percent1">70%</string>
     <string name="percent2">80%</string>
+    <string name="background_image_description">Blurred background image.</string>
 </resources>

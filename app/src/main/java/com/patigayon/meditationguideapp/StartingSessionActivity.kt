@@ -43,6 +43,10 @@ class StartingSessionActivity : AppCompatActivity() {
         }
 
         updateButtons()
+
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setupTimePicker() {
